@@ -17,7 +17,7 @@ namespace testNunitSolution
 			Assert.IsInstanceOf<cl1> (cl1Obj);
 			Assert.IsTrue (cl1Obj.M1 == 0);
 			Assert.AreEqual (cl1Obj.M1, 1);
-			Assert.Fail ();
+			//Assert.Fail ();
 		}
 	}
 }
