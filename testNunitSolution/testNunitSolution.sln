@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testNunitSolution", "testNunitSolution\testNunitSolution.csproj", "{789CC8A4-E03A-4DCD-AE26-CDA5232BA723}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "consoleApp", "consoleApp\consoleApp.csproj", "{7E11069C-0348-4AC8-9F09-A1419E522D10}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{789CC8A4-E03A-4DCD-AE26-CDA5232BA723}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{789CC8A4-E03A-4DCD-AE26-CDA5232BA723}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{789CC8A4-E03A-4DCD-AE26-CDA5232BA723}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{789CC8A4-E03A-4DCD-AE26-CDA5232BA723}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E11069C-0348-4AC8-9F09-A1419E522D10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E11069C-0348-4AC8-9F09-A1419E522D10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E11069C-0348-4AC8-9F09-A1419E522D10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E11069C-0348-4AC8-9F09-A1419E522D10}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = consoleApp\consoleApp.csproj
+	EndGlobalSection
+EndGlobal
