@@ -2,7 +2,7 @@ using System;
 
 namespace consoleApp
 {
-	public class cl1
+	public class cl1:IWriteParams
 	{
 		private int m1;
 		private int m2;
@@ -24,6 +24,12 @@ namespace consoleApp
 			m2=10;
 		}
 
+		public void WriteParams()
+		{
+			Console.WriteLine ("I am cl1 class");
+			throw new Exception("I am exception of the cl1 class");
+		}
+
 
 	
 	}
@@ -32,13 +38,25 @@ namespace consoleApp
 		int test(int it);
 	}
 
-	class MainClass
+	interface IWriteParams {
+		void  WriteParams();
+	}
+
+	class MainClass: IWriteParams
 	{
+		public void WriteParams()
+		{
+			Console.WriteLine ("I am MainClass");
+		}
+
 		public static void Main (string[] args)
 		{
 			cl1 cl1Obj; 
 			cl1Obj = new cl1(); 
 			Console.WriteLine ("Hello World! {0}", cl1Obj.M2);
+			//WriteParams ();
+			MainClass mc = new MainClass ();
+			mc.WriteParams ();
 		}
 	}
 }
