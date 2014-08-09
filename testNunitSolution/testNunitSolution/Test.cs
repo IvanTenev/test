@@ -29,5 +29,13 @@ namespace testNunitSolution
 			cl1 cl1Obj = new cl1 ();
 			Assert.IsTrue (cl1Obj.M1 == 0);
 		}
+
+		[Test()]
+		public void TestCase_InterfaceWriteParams()
+		{
+			cl1 cl = new cl1 ();
+			//Assert.IsNotEmpty (cl.WriteParams ());
+			Assert.IsNotNull (cl);
+		}
 	}
 }
