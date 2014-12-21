@@ -2,6 +2,8 @@ using NUnit.Framework;
 using System;
 using consoleApp;
 using System.Net;
+using System.Net.NetworkInformation;
+using System.Text;
 
 namespace testNunitSolution
 {
@@ -18,7 +20,7 @@ namespace testNunitSolution
 		}
 
 		[Test()]
-		public void TestCase_IsInstanceOf_cl1 ()
+		public void Test_IsInstanceOf_cl1 ()
 		{
 			//Assert.Pass ("pass exception");
 			//Assert.Fail ();
@@ -27,7 +29,7 @@ namespace testNunitSolution
 		}
 
 		[Test()]
-		public void TestCase_AreEqual1 ()
+		public void Test_AreEqual1 ()
 		{
 			cl1 cl1Obj = new cl1 ();
 			//Assert.AreEqual (cl1Obj.M1, 1);
@@ -35,61 +37,69 @@ namespace testNunitSolution
 		}
 
 		[Test()]
-		public void TestCase_IsM1eq0 ()
+		public void Test_IsM1eq0 ()
 		{
 			cl1 cl1Obj = new cl1 ();
 			Assert.IsTrue (cl1Obj.M1 == 0);
 		}
 
 		[Test()]
-		public void TestCase_InterfaceWriteParams()
+		public void Test_InterfaceWriteParams()
 		{
 			cl1 cl = new cl1 ();
-			//Assert.IsNotEmpty (cl.WriteParams ());
-			Assert.IsNull (cl);
+			Assert.IsNotNull (cl);
 		}
 
 		[Test()]
 		[ExpectedException()]
-		public void TestCase_ExceptionTest()
+		public void Test_ExceptionTest()
 		{
 			cl1 cl = new cl1 ();
 			cl.WriteParams ();
 		}
 
 		[Test]
-		public void TestCase_01_Fail()
+		public void Test_10_Fail()
 		{
 			Assert.Fail ("failure");
-			Console.WriteLine ("After failure");
 		}
 
 		[Test]
-		public void TestCase_02_Inconclusive()
+		public void Test_11_Inconclusive()
 		{
 			Assert.Inconclusive ("inconclusive");
 		}
 
 		[Test]
-		public void TestCase_03_Ignore()
+		public void Test_13_Ignore()
 		{
 			Assert.Ignore ("ignore");
 		}
 
 		[Test]
-		public void TestCase_00_SetError()
+		public void Test_99_SetError()
 		{
 			//Error=true; 
 			//Assert.Fail ();
 		}
 
 		[Test]
-		public void TestCase_04_HTTP()
+		public void Test_05_HttpServer()
 		{
-			if (!testHttp ("http://192.168.9.1:81")) 
+			if (!testHttp ("http://192.168.9.1:80 ")) 
 			{
 				Error = true;
 				Assert.Fail ("The web service is not available on this address");
+			}
+		}
+
+		[Test]
+		public void Test_04_PingAddress()
+		{
+			if (!testPing (IPAddress.Parse("192.168.9.1"))) 
+			{
+				Error = true;
+				Assert.Fail ("Device is not present in the network");
 			}
 		}
 
@@ -112,6 +122,28 @@ namespace testNunitSolution
 				//Any exception will returns false.
 				return false;
 			}
+		}
+
+		private bool testPing(IPAddress ip)
+		{
+			Ping pingSender = new Ping ();
+			PingOptions options = new PingOptions ();
+
+			// Use the default Ttl value which is 128, 
+			// but change the fragmentation behavior.
+			options.DontFragment = true;
+
+			// Create a buffer of 32 bytes of data to be transmitted. 
+			string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+			byte[] buffer = Encoding.ASCII.GetBytes (data);
+			int timeout = 120;
+			PingReply reply = pingSender.Send (ip, timeout, buffer, options);
+
+			if (reply.Status != IPStatus.Success)
+				return(false);
+			else
+				return(true);
+
 		}
 	}
 }
