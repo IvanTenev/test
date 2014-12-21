@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using consoleApp;
+using System.Net;
 
 namespace testNunitSolution
 {
@@ -78,12 +79,39 @@ namespace testNunitSolution
 		[Test]
 		public void TestCase_00_SetError()
 		{
-			//Error=true; Assert.Fail ();
+			//Error=true; 
+			//Assert.Fail ();
 		}
 
-		private void t1()
+		[Test]
+		public void TestCase_04_HTTP()
 		{
-			Console.WriteLine ("test function");
+			if (!testHttp ("http://192.168.9.1:81")) 
+			{
+				Error = true;
+				Assert.Fail ("The web service is not available on this address");
+			}
+		}
+
+
+		private bool testHttp(string url)
+		{
+			try
+			{
+				//Creating the HttpWebRequest
+				HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+				//Setting the Request method HEAD, you can also use GET too.
+				request.Method = "HEAD";
+				//Getting the Web Response.
+				HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+				//Returns TURE if the Status code == 200
+				return (response.StatusCode == HttpStatusCode.OK);
+			}
+			catch
+			{
+				//Any exception will returns false.
+				return false;
+			}
 		}
 	}
 }
