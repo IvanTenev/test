@@ -10,17 +10,17 @@ namespace testNunitSolution
 	[TestFixture()]
 	public class Test
 	{
-		private bool Error=false;
+		private bool StopTestExecution=false;
 
 		[SetUp]
 		public void TestSetup()
 		{
-			Assert.False (Error);
+			Assert.False (StopTestExecution);
 			Console.WriteLine ("Test setup");
 		}
 
 		[Test()]
-		public void Test_IsInstanceOf_cl1 ()
+		public void _74_IsInstanceOf_cl1 ()
 		{
 			//Assert.Pass ("pass exception");
 			//Assert.Fail ();
@@ -29,7 +29,7 @@ namespace testNunitSolution
 		}
 
 		[Test()]
-		public void Test_AreEqual1 ()
+		public void _70_AreEqual1 ()
 		{
 			cl1 cl1Obj = new cl1 ();
 			//Assert.AreEqual (cl1Obj.M1, 1);
@@ -37,14 +37,14 @@ namespace testNunitSolution
 		}
 
 		[Test()]
-		public void Test_IsM1eq0 ()
+		public void _71_IsM1eq0 ()
 		{
 			cl1 cl1Obj = new cl1 ();
 			Assert.IsTrue (cl1Obj.M1 == 0);
 		}
 
 		[Test()]
-		public void Test_InterfaceWriteParams()
+		public void _73_InterfaceWriteParams()
 		{
 			cl1 cl = new cl1 ();
 			Assert.IsNotNull (cl);
@@ -52,53 +52,54 @@ namespace testNunitSolution
 
 		[Test()]
 		[ExpectedException()]
-		public void Test_ExceptionTest()
+		public void _72_ExceptionTest()
 		{
 			cl1 cl = new cl1 ();
 			cl.WriteParams ();
 		}
 
 		[Test]
-		public void Test_10_Fail()
+		public void _10_Fail()
 		{
 			Assert.Fail ("failure");
 		}
 
 		[Test]
-		public void Test_11_Inconclusive()
+		public void _11_Inconclusive()
 		{
+			Console.WriteLine (	TestContext.CurrentContext.Result.Status.ToString());
 			Assert.Inconclusive ("inconclusive");
 		}
 
 		[Test]
-		public void Test_13_Ignore()
+		public void _13_Ignore()
 		{
 			Assert.Ignore ("ignore");
 		}
 
 		[Test]
-		public void Test_99_SetError()
+		public void _99_SetError()
 		{
 			//Error=true; 
 			//Assert.Fail ();
 		}
 
 		[Test]
-		public void Test_05_HttpServer()
+		public void _05_HttpServer()
 		{
 			if (!testHttp ("http://192.168.9.1:80 ")) 
 			{
-				Error = true;
+				StopTestExecution = true;
 				Assert.Fail ("The web service is not available on this address");
 			}
 		}
 
 		[Test]
-		public void Test_04_PingAddress()
+		public void _04_PingAddress()
 		{
 			if (!testPing (IPAddress.Parse("192.168.9.1"))) 
 			{
-				Error = true;
+				StopTestExecution = true;
 				Assert.Fail ("Device is not present in the network");
 			}
 		}
