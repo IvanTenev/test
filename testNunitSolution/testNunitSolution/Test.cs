@@ -11,15 +11,25 @@ namespace testNunitSolution
 	public class Test
 	{
 		private bool StopTestExecution=false;
+		private int i=0;
+
+		[TestFixtureSetUp]
+		public void Init()
+		{
+			//
+			Console.WriteLine ("Fixture setup");
+			//Debug.WriteLine ("test");
+			i++;
+		}
 
 		[SetUp]
 		public void TestSetup()
 		{
 			Assert.False (StopTestExecution);
-			Console.WriteLine ("Test setup");
+			Console.WriteLine ("Test setup"+i.ToString());
 		}
 
-		[Test()]
+		[Test(), Description("test number 74")]
 		public void _74_IsInstanceOf_cl1 ()
 		{
 			//Assert.Pass ("pass exception");
@@ -68,6 +78,7 @@ namespace testNunitSolution
 		public void _11_Inconclusive()
 		{
 			Console.WriteLine (	TestContext.CurrentContext.Result.Status.ToString());
+			Console.WriteLine (TestContext.CurrentContext.Test.Name.ToString());
 			Assert.Inconclusive ("inconclusive");
 		}
 
@@ -104,6 +115,21 @@ namespace testNunitSolution
 			}
 		}
 
+		[TestCase(12,3,4)]
+		[TestCase(12,2,6)]
+		[TestCase(12,4,3)]
+		public void DivideTest(int n, int d, int q)
+		{
+			Assert.AreEqual( q, n / d );
+		}
+
+		[TestCase(12,3, Result=4)]
+		[TestCase(12,2, Result=6)]
+		[TestCase(12,4, Result=3)]
+		public int DivideTest2(int n, int d)
+		{
+			return( n / d );
+		}
 
 		private bool testHttp(string url)
 		{
@@ -146,5 +172,13 @@ namespace testNunitSolution
 				return(true);
 
 		}
+
+		[TestFixtureTearDown]
+		public void Closure()
+		{
+			Console.WriteLine ("End of test!");
+		}
+
+
 	}
 }
