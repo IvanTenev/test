@@ -29,9 +29,6 @@ namespace consoleApp
 			Console.WriteLine ("I am cl1 class");
 			throw new Exception("I am exception of the cl1 class");
 		}
-
-
-	
 	}
 
 	interface ITest{
@@ -57,6 +54,36 @@ namespace consoleApp
 			//WriteParams ();
 			MainClass mc = new MainClass ();
 			mc.WriteParams ();
+			//cl1Obj.WriteParams ();
+
+			BNode<int> BNode = new BNode<int>(5);
+		}
+	}
+
+	class BNode<D>
+	{
+		private D data;
+		public BNode(D data)
+		{
+			this.data = data;
+		}
+
+		BNode<D> left;
+		BNode<D> right;
+
+		public D DATA
+		{
+			get{ return data; }
+			set{ data = value;}
+		}
+
+		public void addNode(D data)
+		{
+		}
+
+		public D findNode(D data)
+		{
+			return data;
 		}
 	}
 }

@@ -2,7 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="testNunitSolution/Test.cs">
     <Files>
-      <File FileName="testNunitSolution/Test.cs" Line="14" Column="6" />
+      <File FileName="testNunitSolution/Test.cs" Line="140" Column="17" />
+      <File FileName="consoleApp/Program.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

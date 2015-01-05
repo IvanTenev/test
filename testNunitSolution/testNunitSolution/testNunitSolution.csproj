@@ -44,4 +44,8 @@
       <Name>consoleApp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="XmlFile0.xml" />
+    <None Include="XslFile0.xml" />
+  </ItemGroup>
 </Project>
