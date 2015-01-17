@@ -2,18 +2,18 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="testNunitSolution/Test.cs">
     <Files>
-      <File FileName="testNunitSolution/Test.cs" Line="140" Column="17" />
+      <File FileName="testNunitSolution/Test.cs" Line="138" Column="7" />
       <File FileName="consoleApp/Program.cs" Line="1" Column="1" />
+      <File FileName="testNunitSolution/XmlFile0.xml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
+        <State expanded="True" selected="True">
           <Node name="consoleApp" expanded="True">
             <Node name="Properties" expanded="True" />
           </Node>
           <Node name="testNunitSolution" expanded="True">
             <Node name="References" expanded="True" />
-            <Node name="Test.cs" selected="True" />
           </Node>
         </State>
       </Pad>
